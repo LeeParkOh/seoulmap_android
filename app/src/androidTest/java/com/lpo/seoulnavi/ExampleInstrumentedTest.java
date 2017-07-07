@@ -1,4 +1,4 @@
-package com.ipo.seoulnavi;
+package com.lpo.seoulnavi;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.ipo.seoulnavi", appContext.getPackageName());
+        assertEquals("com.lpo.seoulnavi", appContext.getPackageName());
     }
 }
