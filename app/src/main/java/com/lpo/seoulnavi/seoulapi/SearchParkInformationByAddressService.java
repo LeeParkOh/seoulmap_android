@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.lpo.seoulnavi.net.response.ParkInfoRes;
 import com.lpo.seoulnavi.net.retrofit.ContentService;
+import com.lpo.seoulnavi.seoulapi.ApiUtil;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
