@@ -1,9 +1,11 @@
-package com.lpo.seoulnavi.SeoulApi;
+package com.lpo.seoulnavi.seoulapi;
 
 import android.util.Log;
 
+import com.lpo.seoulnavi.net.response.ParkInfoRes;
+import com.lpo.seoulnavi.net.retrofit.ContentService;
+
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -14,15 +16,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SearchParkInformationByAddressService {
     protected static final String TAG = "SearchParkInformationByAddressService";
-    private static final String baseUrl = "http://openapi.seoul.go.kr:8088/476b6d4a4c74776f3131394d78654457/json/SearchParkInformationByAddressService/1/100/";
+//    private static final String baseUrl = "http://openapi.seoul.go.kr:8088/476b6d4a4c74776f3131394d78654457/json/SearchParkInformationByAddressService/1/100/";
     String pAddr ="";
     public void searchParkInfo(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
+                .baseUrl(ApiUtil.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ContentService service = retrofit.create(ContentService.class);
         Call<ParkInfoRes> call = service.getPostParkInfo(pAddr);
-        Log.d(TAG,"calllll>>>>>"+call );
+        Log.d(TAG,"calllll>>>>>");
+
     }
 }

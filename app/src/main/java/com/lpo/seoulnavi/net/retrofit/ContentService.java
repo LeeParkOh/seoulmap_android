@@ -1,15 +1,14 @@
-package com.lpo.seoulnavi.SeoulApi;
+package com.lpo.seoulnavi.net.retrofit;
 
 /**
  * Created by parkjongkook on 2017. 7. 17..
  */
+import com.lpo.seoulnavi.net.response.ParkInfoRes;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface ContentService {
     /**

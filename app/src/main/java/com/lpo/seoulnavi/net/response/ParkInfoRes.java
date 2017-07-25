@@ -1,4 +1,4 @@
-package com.lpo.seoulnavi.SeoulApi;
+package com.lpo.seoulnavi.net.response;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
