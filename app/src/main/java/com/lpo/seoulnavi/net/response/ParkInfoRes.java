@@ -9,13 +9,17 @@ import java.util.ArrayList;
 public class ParkInfoRes {
     protected static final String TAG = "ParkInfoRes";
     @SerializedName("list_total_count")
-    public String resultCode;
+    public int listTotlaCount;
 
-    @SerializedName("CODE")
-    public String code;
+    @SerializedName("RESULT")
+    public ArrayList<resultList> resultList = new ArrayList<>();
 
-    @SerializedName("MESSAGE")
-    public String message;
+    public class resultList{
+        @SerializedName("CODE")
+        public String code;
+        @SerializedName("MESSAGE")
+        public String message;
+    }
 
     @SerializedName("row")
     public ArrayList<rowList> rowList = new ArrayList<>();
@@ -55,19 +59,19 @@ public class ParkInfoRes {
 
         //X좌표(WGS84)
         @SerializedName("LONGITUDE")
-        public String longitude;
+        public long longitude;
 
         //Y좌표(WGS84)
         @SerializedName("LATITUDE")
-        public String latitude;
+        public long latitude;
 
         //X좌표(GRS80TM)
         @SerializedName("G_LONGITUDE")
-        public String gLongitude;
+        public long gLongitude;
 
         //Y좌표(GRS80TM)
         @SerializedName("G_LATITUDE")
-        public String gLatitude;
+        public long gLatitude;
     }
 
 }

@@ -18,8 +18,8 @@ public interface ContentService {
      * @return
      */
     @FormUrlEncoded
-    @POST("/SearchParkInformationByAddressService.do")
-    Call<ParkInfoRes> getPostParkInfo(@Field("pAddr") String pAddr);
+    @POST("/")
+    Call<ParkInfoRes> getPostParkInfo(@Field("P_ADDR") String pAddr);
 
 
 }
