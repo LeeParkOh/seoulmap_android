@@ -21,6 +21,6 @@ public interface ContentService {
 //    @POST("/476b6d4a4c74776f3131394d78654457/json/SearchParkInfo/1/100/")
 //    Call<ParkInfoRes> getPostParkInfo(@Field("P_ADDR") String pAddr);
 
-    @GET("/476b6d4a4c74776f3131394d78654457/json/SearchParkInfo/1/100/")
+    @GET("/476b6d4a4c74776f3131394d78654457/json/SearchParkInformationByAddressService/1/100/")
     Call<ParkInfoRes> getPostParkInfo();
 }
