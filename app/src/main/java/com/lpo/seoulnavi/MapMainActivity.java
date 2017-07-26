@@ -3,8 +3,8 @@ package com.lpo.seoulnavi;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.lpo.seoulnavi.seoulapi.ApiUtil;
-import com.lpo.seoulnavi.seoulapi.SearchParkInformationByAddressService;
+import com.lpo.seoulnavi.utils.ApiUtil;
+import com.lpo.seoulnavi.seoulapi.SearchParkInfo;
 import com.nhn.android.maps.NMapActivity;
 import com.nhn.android.maps.NMapView;
 
@@ -21,16 +21,16 @@ public class MapMainActivity extends NMapActivity {
         setContentView(R.layout.activity_map_main);
         mMapView = new NMapView(this);
         setContentView(mMapView);
-        mMapView.setClientId(ApiUtil.API_KEY);
+        mMapView.setClientId(ApiUtil.NAVER_API_KEY);
         mMapView.setClickable(true);
         mMapView.setEnabled(true);
         mMapView.setFocusable(true);
         mMapView.setFocusableInTouchMode(true);
         mMapView.requestFocus();
         Log.d(TAG,"JK>>>>>1");
-        SearchParkInformationByAddressService searchParkInformationByAddressService = new SearchParkInformationByAddressService();
+        SearchParkInfo searchParkInfo = new SearchParkInfo();
         Log.d(TAG,"JK>>>>>2");
-        searchParkInformationByAddressService.searchParkInfo();
+        searchParkInfo.searchParkInfo();
         Log.d(TAG,"JK>>>>>3");
     }
 }

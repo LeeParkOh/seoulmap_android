@@ -9,22 +9,33 @@ import java.util.ArrayList;
 public class ParkInfoRes {
     protected static final String TAG = "ParkInfoRes";
     @SerializedName("list_total_count")
-    public int listTotlaCount;
+    public String listTotlaCount;
+
+//    @SerializedName("RESULT")
+//    public ArrayList<resultList> resultList = new ArrayList<>();
 
     @SerializedName("RESULT")
-    public ArrayList<resultList> resultList = new ArrayList<>();
+    public RESULTLIST resultList;
 
-    public class resultList{
+    public class RESULTLIST {
+
         @SerializedName("CODE")
         public String code;
         @SerializedName("MESSAGE")
         public String message;
     }
 
-    @SerializedName("row")
-    public ArrayList<rowList> rowList = new ArrayList<>();
+//    public class resultList{
+//        @SerializedName("CODE")
+//        public String code;
+//        @SerializedName("MESSAGE")
+//        public String message;
+//    }
 
-    public class rowList{
+    @SerializedName("row")
+    public ArrayList<row> row = new ArrayList<>();
+
+    public class row {
         //공원번호
         @SerializedName("P_IDX")
         public String pIdx;
@@ -59,19 +70,19 @@ public class ParkInfoRes {
 
         //X좌표(WGS84)
         @SerializedName("LONGITUDE")
-        public long longitude;
+        public String longitude;
 
         //Y좌표(WGS84)
         @SerializedName("LATITUDE")
-        public long latitude;
+        public String latitude;
 
         //X좌표(GRS80TM)
         @SerializedName("G_LONGITUDE")
-        public long gLongitude;
+        public String gLongitude;
 
         //Y좌표(GRS80TM)
         @SerializedName("G_LATITUDE")
-        public long gLatitude;
+        public String gLatitude;
     }
 
 }

@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.lpo.seoulnavi.net.response.ParkInfoRes;
 import com.lpo.seoulnavi.net.retrofit.ContentService;
-import com.lpo.seoulnavi.seoulapi.ApiUtil;
+import com.lpo.seoulnavi.utils.ApiUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,8 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  *  서울시 주소별 공원정보 조회
  */
 
-public class SearchParkInformationByAddressService {
-    protected static final String TAG = "SearchParkInformationByAddressService";
+public class SearchParkInfo {
+    private static final String TAG = "SearchParkInfo";
     private static ParkInfoRes mParkInfoRes;
     ApiUtil apiUtil = new ApiUtil();
     protected final String baseUrl = apiUtil.getUrl("");
@@ -28,28 +28,24 @@ public class SearchParkInformationByAddressService {
         Log.d(TAG,"baseUrl>>>"+baseUrl);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
+                .baseUrl(ApiUtil.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ContentService service = retrofit.create(ContentService.class);
-        Call<ParkInfoRes> call = service.getPostParkInfo("");
-        Log.d(TAG,"calllll>>>>>"+call);
+        Call<ParkInfoRes> call = service.getPostParkInfo();
 
         call.enqueue(new Callback<ParkInfoRes>() {
             @Override
             public void onResponse(Call<ParkInfoRes> call, Response<ParkInfoRes> response) {
-                Log.d(TAG, "onResponse");
+
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "onResponse  2");
                     Log.d(TAG, "Retrofit Response Success");
                     mParkInfoRes = response.body();
-                    //mBoardMainAdapter = new BoardMainAdapter(mBoardMainRes);
-                    //mRecyclerView.setAdapter(mBoardMainAdapter);
-                    Log.d(TAG, "listTotlaCount>>>"+mParkInfoRes.listTotlaCount);
-                    Log.d(TAG, "resultList>>>"+mParkInfoRes.resultList);
-                    Log.d(TAG, "rowList>>>"+mParkInfoRes.rowList);
+                    Log.d(TAG, "mParkInfoRes Result Code = " + mParkInfoRes.resultList.code);
+                    Log.d(TAG, "mParkInfoRes Result Msg = " + mParkInfoRes.resultList.message);
+                    Log.d(TAG, "mParkInfoRes Row Size = " + mParkInfoRes.row.size());
+
                 } else {
-                    Log.d(TAG, "onResponse  3");
                     Log.d(TAG, "Retrofit Response Not Success");
                 }
             }
