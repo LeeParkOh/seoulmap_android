@@ -1,10 +1,18 @@
 package com.lpo.seoulnavi.seoulapi;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.lpo.seoulnavi.MapMainActivity;
 import com.lpo.seoulnavi.net.response.ParkInfoRes;
 import com.lpo.seoulnavi.net.retrofit.ContentService;
 import com.lpo.seoulnavi.utils.ApiUtil;
+import com.nhn.android.maps.overlay.NMapPOIdata;
+import com.nhn.android.maps.overlay.NMapPOIitem;
+import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
+import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
+
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,6 +50,10 @@ public class SearchParkInfo {
                     Log.d(TAG, "Retrofit Response Success");
                     mParkInfoRes = response.body();
                     Log.d(TAG, "mParkInfoRes Row Size = " + mParkInfoRes.searchParkInfo.row.size());
+                    for(int i=0;i<mParkInfoRes.searchParkInfo.row.size();i++){
+                        Log.d(TAG, "mParkInfoRes 공원명 = " + mParkInfoRes.searchParkInfo.row.get(i).pPark);
+                    }
+                    //testPOIdataOverlay();
                 } else {
                     Log.d(TAG, "Retrofit Response Not Success");
                 }
@@ -55,4 +67,7 @@ public class SearchParkInfo {
             }
         });
     }
+
+
+
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SeoulNavi</string>
+    <string name="hello">Hello Seoul!</string>
+    <string name="str_done">완료</string>
 </resources>

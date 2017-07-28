@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.lpo.seoulnavi">
-
+    <supports-screens android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:anyDensity="true" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <!--위치정보활용시 추가-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -19,7 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".MapMainActivity">
+        <activity android:name=".MapMainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
