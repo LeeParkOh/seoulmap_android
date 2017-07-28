@@ -41,7 +41,7 @@ public class SearchParkInfo {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "Retrofit Response Success");
                     mParkInfoRes = response.body();
-                    Log.d(TAG, "mParkInfoRes Row Size = " + mParkInfoRes.searchParkInformationByAddressService.row.size());
+                    Log.d(TAG, "mParkInfoRes Row Size = " + mParkInfoRes.searchParkInfo.row.size());
                 } else {
                     Log.d(TAG, "Retrofit Response Not Success");
                 }
@@ -50,8 +50,8 @@ public class SearchParkInfo {
             @Override
             public void onFailure(Call<ParkInfoRes> call, Throwable t) {
                 Log.d(TAG, "onFailure");
-                Log.d(TAG, "mParkInfoRes Result Code = " + mParkInfoRes.searchParkInformationByAddressService.resultList.code);
-                Log.d(TAG, "mParkInfoRes Result Msg = " + mParkInfoRes.searchParkInformationByAddressService.resultList.message);
+                Log.d(TAG, "mParkInfoRes Result Code = " + mParkInfoRes.searchParkInfo.resultList.code);
+                Log.d(TAG, "mParkInfoRes Result Msg = " + mParkInfoRes.searchParkInfo.resultList.message);
             }
         });
     }

@@ -10,9 +10,9 @@ public class ParkInfoRes {
     protected static final String TAG = "ParkInfoRes";
 
     @SerializedName("SearchParkInformationByAddressService")
-    public SearchParkInformationByAddressService searchParkInformationByAddressService;
+    public SearchParkInfo searchParkInfo;
 
-    public class SearchParkInformationByAddressService {
+    public class SearchParkInfo {
 
         @SerializedName("list_total_count")
         public String listTotlaCount;
