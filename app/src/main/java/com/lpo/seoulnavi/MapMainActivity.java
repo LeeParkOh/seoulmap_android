@@ -1,7 +1,10 @@
 package com.lpo.seoulnavi;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.lpo.seoulnavi.utils.ApiUtil;
 import com.lpo.seoulnavi.seoulapi.SearchParkInfo;
@@ -10,14 +13,17 @@ import com.nhn.android.maps.NMapView;
 
 public class MapMainActivity extends NMapActivity {
 
-    private NMapView mMapView;// 지도 화면 View
-//    private final String CLIENT_ID = "xX_X9wNXFyIe0z3vGgi2";// 애플리케이션 클라이언트 아이디 값
     protected static final String TAG = "MapMainActivity";
+
+    // 지도 화면 View
+    private NMapView mMapView;
+    // 플로팅 View
+    private FloatingActionButton mFab;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG,"JK>>>>>------");
         super.onCreate(savedInstanceState);
-        Log.d(TAG,"JK>>>>>0");
         setContentView(R.layout.activity_map_main);
         mMapView = new NMapView(this);
         setContentView(mMapView);
@@ -27,10 +33,16 @@ public class MapMainActivity extends NMapActivity {
         mMapView.setFocusable(true);
         mMapView.setFocusableInTouchMode(true);
         mMapView.requestFocus();
-        Log.d(TAG,"JK>>>>>1");
         SearchParkInfo searchParkInfo = new SearchParkInfo();
-        Log.d(TAG,"JK>>>>>2");
         searchParkInfo.searchParkInfo();
-        Log.d(TAG,"JK>>>>>3");
+
+//        mFab = (FloatingActionButton) findViewById(R.id.fab);
+//        mFab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "Filter View", Toast.LENGTH_LONG).show();
+//            }
+//        });
+
     }
 }
