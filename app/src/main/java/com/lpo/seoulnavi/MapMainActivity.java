@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.lpo.seoulnavi.net.response.ParkInfoRes;
 import com.lpo.seoulnavi.seoulapi.NMapCalloutCustomOldOverlay;
 import com.lpo.seoulnavi.seoulapi.NMapCalloutCustomOverlayView;
 import com.lpo.seoulnavi.seoulapi.NMapPOIflagType;
@@ -67,7 +68,8 @@ public class MapMainActivity extends NMapActivity {
     // 플로팅 View
     private FloatingActionButton mFab;
 
-
+    private static SearchParkInfo searchParkInfo = new SearchParkInfo();
+    private static ParkInfoRes mParkInfoRes = new ParkInfoRes();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,68 +121,66 @@ public class MapMainActivity extends NMapActivity {
         mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
 
 
-        SearchParkInfo searchParkInfo = new SearchParkInfo();
-        searchParkInfo.searchParkInfo();
-        Log.d(TAG,"markParkInfo>>>>>>>");
-
+        Log.d(TAG,"왔나 >>>>>>>>>>>>>>>>>>>>>>");
+        testSync();
+        Log.d(TAG,"왔나 >>>>>>>>>>>>>>>>>>>>>>2");
         //마크 찍히는지 테스트
-        markParkInfo();
-
-
-//        mFab = (FloatingActionButton) findViewById(R.id.fab);
-//        mFab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "Filter View", Toast.LENGTH_LONG).show();
-//            }
-//        });
-
+      //  markParkInfo();
+    }
+   void testSync() {
+           Log.d(TAG, "sync 맞냐??<<<>>>>>");
+           mParkInfoRes = searchParkInfo.searchParkInfo();
+           //Log.d(TAG,">>>>.>"+mParkInfoRes.searchParkInfo.row.get(1).pPark);
+       Log.d(TAG, "sync 맞냐??<<<>>>>>end");
     }
     private void markParkInfo(){
         mOverlayManager.clearOverlays();
         testPOIdataOverlay();
-
     }
 
     //마커표시 클릭시 들어왔다
     private void testPOIdataOverlay() {
-        Log.d(TAG, "	>>>>	24 testPOIdataOverlay	");
+        int rowSize = mParkInfoRes.searchParkInfo.row.size();
+        Log.d(TAG,"rowSize>>>>"+rowSize);
+
         // Markers for POI item
         int markerId = NMapPOIflagType.PIN;
-        Log.d(TAG, "	>>>>	24-1 testPOIdataOverlay	");
+
         // set POI data
         NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
         poiData.beginPOIdata(2);
+/*
+        for(int i=0 ;i<rowSize; i++){
 
-        Log.d(TAG, "	>>>>	24-2 testPOIdataOverlay	");
+            NMapPOIitem item = poiData.addPOIitem(mParkInfoRes.searchParkInfo.row.get(i).latitude
+                                                , mParkInfoRes.searchParkInfo.row.get(i).longitude
+                                                , mParkInfoRes.searchParkInfo.row.get(i).pPark
+                                                , markerId, 0);
+            item.setRightAccessory(true, NMapPOIflagType.CLICKABLE_ARROW);
+        }
+*/
+
         NMapPOIitem item = poiData.addPOIitem(127.0630205, 37.5091300, "Pizza 777-111", markerId, 0);
         item.setRightAccessory(true, NMapPOIflagType.CLICKABLE_ARROW);
 
-        Log.d(TAG, "	>>>>	24-3 testPOIdataOverlay	");
         NMapPOIitem item2 = poiData.addPOIitem(126.99032745918585, 37.56428173790483, "쌍용정보통신", markerId, 0);
         item2.setRightAccessory(true, NMapPOIflagType.CLICKABLE_ARROW);
 
-        Log.d(TAG, "	>>>>	24-4 testPOIdataOverlay	");
         NMapPOIitem item3 = poiData.addPOIitem(127.056960477563, 37.5151448382399, "봉은공원2", markerId, 0);
         item3.setRightAccessory(true, NMapPOIflagType.CLICKABLE_ARROW);
 
-        Log.d(TAG, "	>>>>	24-5 testPOIdataOverlay	");
         poiData.addPOIitem(127.061, 37.51, "Pizza 123-456", markerId, 0);
         poiData.endPOIdata();
 
-        Log.d(TAG, "	>>>>	24-6 testPOIdataOverlay	");
+
         // create POI data overlay
         NMapPOIdataOverlay poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
 
-        Log.d(TAG, "	>>>>	24-7 testPOIdataOverlay	");
         // set event listener to the overlay
         poiDataOverlay.setOnStateChangeListener(onPOIdataStateChangeListener);
 
-        Log.d(TAG, "	>>>>	24-8 testPOIdataOverlay	");
-
         // select an item
         poiDataOverlay.selectPOIitem(0, true);
-        Log.d(TAG, "	>>>>	24-9 testPOIdataOverlay	");
     }//testPOIdataOverlay end
 
     /* POI data State Change Listener*/

@@ -65,19 +65,19 @@ public class ParkInfoRes {
 
             //X좌표(WGS84)
             @SerializedName("LONGITUDE")
-            public String longitude;
+            public double longitude;
 
             //Y좌표(WGS84)
             @SerializedName("LATITUDE")
-            public String latitude;
+            public double latitude;
 
             //X좌표(GRS80TM)
             @SerializedName("G_LONGITUDE")
-            public String gLongitude;
+            public double gLongitude;
 
             //Y좌표(GRS80TM)
             @SerializedName("G_LATITUDE")
-            public String gLatitude;
+            public double gLatitude;
         }
     }
 }
